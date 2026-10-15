@@ -26,6 +26,8 @@ jobs:
           enable-cache: true
       - name: Install system dependencies
         run: sudo apt-get update && sudo apt-get install -y gettext libjpeg-dev zlib1g-dev libpq-dev
+      - name: Check workflow paths
+        run: uv tool run --from cookiecutter --with pyyaml python -m unittest discover -s tests -v
       - name: Generate plugin
         run: |
           uv tool run --from cookiecutter cookiecutter . --no-input module_name=${{ matrix.module }} human_name="${{ matrix.human_name }}"

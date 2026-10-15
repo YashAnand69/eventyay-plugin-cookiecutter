@@ -8,7 +8,7 @@ test:
         - git clone --depth 1 https://github.com/fossasia/eventyay.git ../eventyay
         - uv sync --project ../eventyay/app --all-extras --all-groups
     script:
-        - uv pip install --python ../eventyay/app/.venv/bin/python -e . coverage
+        - uv pip install --python ../eventyay/app/.venv/bin/python -e . coverage pytest pytest-django
         - EVY_RUNNING_ENVIRONMENT=testing ../eventyay/app/.venv/bin/coverage run -m pytest tests
         - ../eventyay/app/.venv/bin/coverage report
 style:
